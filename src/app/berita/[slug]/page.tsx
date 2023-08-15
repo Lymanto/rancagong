@@ -6,8 +6,15 @@ import { format } from 'date-fns';
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
+type BeritaType = {
+  title: string;
+  description: string;
+  imageUrl: string;
+  createdAt: string;
+};
+
 export default function BeritaSlug({ params }: { params: { slug: string } }) {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState<BeritaType>();
   const slug = params.slug;
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
@@ -30,7 +37,7 @@ export default function BeritaSlug({ params }: { params: { slug: string } }) {
       <div className="max-w-[62.25rem] w-full mx-auto mt-[3rem]">
         <div>
           <h1 className="text-secondary text-4xl leading-[3.5rem] font-semibold text-center max-w-[40rem] mx-auto mb-3">
-            {data?.title}
+            {data!.title}
           </h1>
           <div className="flex gap-1 items-center mb-9 justify-center">
             <Image
@@ -40,12 +47,12 @@ export default function BeritaSlug({ params }: { params: { slug: string } }) {
               alt="Icon Calendar"
             />
             <p className="text-sm leading-[1.3125rem] text-third">
-              {format(new Date(data?.createdAt), 'dd MMMM yyyy')}
+              {format(new Date(data!.createdAt), 'dd MMMM yyyy')}
             </p>
           </div>
           <div className="relative w-full h-[36.375rem] overflow-hidden mx-auto">
             <Image
-              src={data?.imageUrl}
+              src={data!.imageUrl}
               alt="dummy"
               fill
               style={{ objectFit: 'cover', position: 'absolute' }}
@@ -53,7 +60,7 @@ export default function BeritaSlug({ params }: { params: { slug: string } }) {
           </div>
           <div
             className="flex flex-col gap-3 mt-3 article-content "
-            dangerouslySetInnerHTML={{ __html: data?.description }}
+            dangerouslySetInnerHTML={{ __html: data!.description }}
           />
         </div>
       </div>
