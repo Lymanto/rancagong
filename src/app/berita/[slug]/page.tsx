@@ -34,7 +34,7 @@ export default function BeritaSlug({ params }: { params: { slug: string } }) {
   return (
     <main>
       <Header />
-      <div className="max-w-[62.25rem] w-full mx-auto mt-[3rem]">
+      <div className="max-w-[62.25rem] w-full mx-auto mt-[3rem]  px-4 md:px-0">
         <div>
           <h1 className="text-secondary text-4xl leading-[3.5rem] font-semibold text-center max-w-[40rem] mx-auto mb-3">
             {data!.title}
@@ -50,7 +50,7 @@ export default function BeritaSlug({ params }: { params: { slug: string } }) {
               {format(new Date(data!.createdAt), 'dd MMMM yyyy')}
             </p>
           </div>
-          <div className="relative w-full h-[36.375rem] overflow-hidden mx-auto">
+          <div className="relative w-full h-[18rem] md:h-[36.375rem] overflow-hidden mx-auto">
             <Image
               src={data!.imageUrl}
               alt="dummy"
