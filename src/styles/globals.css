@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+.article-description > p {
+  @apply text-sm leading-[1.3125rem] tracking-[0.14px] font-normal;
+}
+.article-content > p {
+  @apply text-base leading-[1.3125rem] tracking-[0.14px] font-normal;
+}

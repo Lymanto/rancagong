@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid()) @map("_id")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  email     String   @unique
+  password  String
+  name      String
+}
+
+model News {
+  id          String   @id @default(cuid()) @map("_id")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  title       String
+  description String
+  imageUrl    String
+  imageId     String
+  url         String   @unique
+}
+
+model Schedule {
+  id          String   @id @default(cuid()) @map("_id")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  title       String
+  description String
+  imageUrl    String
+  imageId     String
+  date        DateTime
+  url         String   @unique
+  location    String
+}
+
+model Aparatur {
+  id        String   @id @default(cuid()) @map("_id")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  name      String
+  position  String
+  imageUrl  String
+  imageId   String
+}
+
+model Umkm {
+  id           String   @id @default(cuid()) @map("_id")
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  name         String
+  description  String
+  address      String
+  imageUrl     String
+  imageId      String
+  whatsAppUrl  String?
+  tokopediaUrl String?
+  shopeeUrl    String?
+  instagramUrl String?
+  goFoodUrl    String?
+  grabFoodUrl  String?
+  ttUrl        String?
+}
