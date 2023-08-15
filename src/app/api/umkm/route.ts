@@ -55,6 +55,7 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
       image.type +
       ';base64,' +
       Buffer.from(await image.arrayBuffer()).toString('base64');
+
     const uploadedImageResponse = await cloudinary.uploader
       .upload(imageFile, ['rancagong'])
       .catch((err: any) => {

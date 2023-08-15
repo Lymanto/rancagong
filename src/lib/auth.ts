@@ -25,16 +25,16 @@ export const authOptions: NextAuthOptions = {
         },
       },
       async authorize(credentials) {
-        if (!credentials.email || !credentials.password) return null;
+        if (!credentials!.email || !credentials!.password) return null;
         const user = await prisma.user.findUnique({
           where: {
-            email: credentials.email,
+            email: credentials!.email,
           },
         });
         if (!user) return null;
 
         const isPasswordValid = await compare(
-          credentials.password,
+          credentials!.password,
           user.password
         );
 
@@ -50,7 +50,6 @@ export const authOptions: NextAuthOptions = {
   ],
   callbacks: {
     session: ({ session, token }) => {
-      console.log('session callback', { session, token });
       return {
         ...session,
         user: {
@@ -61,7 +60,6 @@ export const authOptions: NextAuthOptions = {
       };
     },
     jwt: ({ token, user }) => {
-      console.log('jwt callback', { token, user });
       const u = user as unknown as any;
       if (user) {
         return {
