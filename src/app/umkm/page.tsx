@@ -7,10 +7,9 @@ import UMKMCard from '@/component/UMKMCard';
 import axios from 'axios';
 import { UMKMType } from '@/lib/types';
 import { useQuery } from '@tanstack/react-query';
-import { is } from 'date-fns/locale';
 const getUMKM = async () => {
-  const umkm: UMKMType[] = await axios.get('/api/umkm');
-  return umkm?.data;
+  const umkm = await axios.get('/api/umkm');
+  return umkm.data;
 };
 export default function Umkm() {
   const { data, isLoading, isSuccess } = useQuery<UMKMType[]>({

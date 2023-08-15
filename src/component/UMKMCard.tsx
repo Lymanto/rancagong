@@ -13,7 +13,18 @@ export default function UMKMCard({
   shopeeUrl,
   instagramUrl,
   ttUrl,
-}: UMKMType) {
+}: {
+  imageUrl: string;
+  name: string;
+  description: string;
+  whatsAppUrl: string;
+  goFoodUrl: string;
+  grabFoodUrl: string;
+  tokopediaUrl: string;
+  shopeeUrl: string;
+  instagramUrl: string;
+  ttUrl: string;
+}) {
   return (
     <div className="bg-white shadow-primary rounded-[8px] overflow-hidden py-6">
       <div className="relative w-[6.25rem] h-[6.25rem] rounded-full overflow-hidden mx-auto">
