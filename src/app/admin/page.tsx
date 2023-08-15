@@ -7,7 +7,7 @@ import React from 'react';
 export default async function Login() {
   const session = await getServerSession(authOptions);
   if (session) {
-    redirect('/admin/dashboard');
+    redirect('/admin/berita');
   }
   console.log(session);
   return (

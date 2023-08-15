@@ -36,7 +36,7 @@ export default function Sidebar() {
                   ></path>
                 </svg>
               </button>
-              <a href="https://flowbite.com" className="flex ml-2 md:mr-24">
+              <a href="/admin" className="flex ml-2 md:mr-24">
                 <Image
                   src={'/logo.png'}
                   width={28}
@@ -63,7 +63,7 @@ export default function Sidebar() {
       >
         <div className="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
-            <li>
+            {/* <li>
               <a
                 href="/admin/dashboard"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
@@ -80,7 +80,7 @@ export default function Sidebar() {
                 </svg>
                 <span className="ml-3">Dashboard</span>
               </a>
-            </li>
+            </li> */}
             <li>
               <a
                 href="/admin/berita"

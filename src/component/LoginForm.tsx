@@ -14,7 +14,7 @@ export default function LoginForm() {
   });
   const [error, setError] = useState('');
   const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get('callbackUrl') || '/admin/dashboard';
+  const callbackUrl = searchParams.get('callbackUrl') || '/admin/berita';
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

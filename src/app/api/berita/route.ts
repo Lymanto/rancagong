@@ -1,6 +1,8 @@
 import cloudinary from '@/lib/cloudinary';
 import { prisma } from '@/lib/prisma';
 import { NextRequest, NextResponse } from 'next/server';
+import { getServerSession } from 'next-auth/next';
+import { authOptions } from '@/lib/auth';
 
 async function main() {
   try {
@@ -43,6 +45,10 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
 
 export const POST = async (req: NextRequest, res: NextResponse) => {
   try {
+    const session = await getServerSession({ req, ...authOptions });
+    if (!session) {
+      return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+    }
     const formData = await req.formData();
     const title = formData.get('title') as string;
     const description = formData.get('description') as string;
@@ -87,6 +93,10 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
 
 export const PUT = async (req: NextRequest, res: NextResponse) => {
   try {
+    const session = await getServerSession({ req, ...authOptions });
+    if (!session) {
+      return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+    }
     const formData = await req.formData();
     const id = formData.get('id') as string;
     const title = formData.get('title') as string;
@@ -152,6 +162,10 @@ export const PUT = async (req: NextRequest, res: NextResponse) => {
 
 export const DELETE = async (req: NextRequest, res: NextResponse) => {
   try {
+    const session = await getServerSession({ req, ...authOptions });
+    if (!session) {
+      return NextResponse.json({ message: 'Unauthorized' }, { status: 401 });
+    }
     const formData = await req.formData();
     const id = formData.get('id') as string;
     const imageId = formData.get('imageId') as string;
@@ -168,9 +182,4 @@ export const DELETE = async (req: NextRequest, res: NextResponse) => {
   } finally {
     await prisma.$disconnect();
   }
-};
-export const config = {
-  api: {
-    bodyParser: false,
-  },
 };
