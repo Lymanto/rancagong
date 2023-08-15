@@ -102,7 +102,7 @@ export default function ModalEdit({
 
     onSuccess: (data) => {
       queryClient.invalidateQueries(['umkm']);
-      onClickCancel();
+      onClickCancel;
     },
   });
   return (

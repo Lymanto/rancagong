@@ -38,7 +38,7 @@ export default function ModalDelete({
 
     onSuccess: (data) => {
       queryClient.invalidateQueries(['berita']);
-      onClickCancel();
+      onClickCancel;
     },
   });
   return (

@@ -87,7 +87,7 @@ export default function ModalEdit({
 
     onSuccess: (data) => {
       queryClient.invalidateQueries(['berita']);
-      onClickCancel();
+      onClickCancel;
     },
   });
   return (

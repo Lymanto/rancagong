@@ -38,7 +38,7 @@ export default function ModalDelete({
 
     onSuccess: (data) => {
       queryClient.invalidateQueries(['aparatur']);
-      onClickCancel();
+      onClickCancel;
     },
   });
   return (
