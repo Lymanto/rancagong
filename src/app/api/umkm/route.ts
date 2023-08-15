@@ -200,8 +200,3 @@ export const DELETE = async (req: NextRequest, res: NextResponse) => {
     await prisma.$disconnect();
   }
 };
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
