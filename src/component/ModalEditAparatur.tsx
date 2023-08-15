@@ -50,7 +50,7 @@ export default function ModalEdit({
 
     onSuccess: (data) => {
       queryClient.invalidateQueries(['aparatur']);
-      onClickCancel;
+      onClickCancel?.(MouseEvent as any);
     },
   });
   return (

@@ -38,7 +38,7 @@ export default function ModalDelete({
 
     onSuccess: (data) => {
       queryClient.invalidateQueries(['agenda']);
-      onClickCancel;
+      onClickCancel?.(MouseEvent as any);
     },
   });
   return (

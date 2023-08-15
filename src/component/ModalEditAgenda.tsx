@@ -95,7 +95,7 @@ export default function ModalEdit({
 
     onSuccess: (data) => {
       queryClient.invalidateQueries(['agenda']);
-      onClickCancel;
+      onClickCancel?.(MouseEvent as any);
     },
   });
   return (
