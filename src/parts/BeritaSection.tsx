@@ -30,7 +30,7 @@ export default function BeritaSection() {
       ) : (
         <>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-[3rem]">
-            {isSuccess &&
+            {data?.length != 0 ? (
               data?.map((item) => (
                 <BeritaCard
                   image={item.imageUrl}
@@ -40,16 +40,21 @@ export default function BeritaSection() {
                   url={item.url}
                   key={item.id}
                 />
-              ))}
+              ))
+            ) : (
+              <div>Tidak ada data</div>
+            )}
           </div>
-          <div className="text-center">
-            <a
-              href="/berita"
-              className="px-[2.75rem] py-3 border-2 border-primary text-secondary bg-tranparent rounded-[4px] text-lg leading-[1.6875rem] font-semibold"
-            >
-              Lihat Selengkapnya
-            </a>
-          </div>
+          {data?.length != 0 && (
+            <div className="text-center">
+              <a
+                href="/berita"
+                className="px-[2.75rem] py-3 border-2 border-primary text-secondary bg-tranparent rounded-[4px] text-lg leading-[1.6875rem] font-semibold"
+              >
+                Lihat Selengkapnya
+              </a>
+            </div>
+          )}
         </>
       )}
     </section>

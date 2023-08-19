@@ -4,6 +4,7 @@ import Header from '@/component/Header';
 import axios from 'axios';
 import { format } from 'date-fns';
 import Image from 'next/image';
+import { redirect, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
 type BeritaType = {
@@ -16,14 +17,20 @@ type BeritaType = {
 export default function BeritaSlug({ params }: { params: { slug: string } }) {
   const [data, setData] = useState<BeritaType>();
   const slug = params.slug;
+  const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
-    axios.get(`/api/berita/${slug}`).then((res) => {
-      setData(res.data);
-      setIsLoading(false);
-    });
-  }, [slug]);
-  if (isLoading)
+    axios
+      .get(`/api/berita/${slug}`)
+      .then((res) => {
+        setData(res.data);
+        setIsLoading(false);
+      })
+      .catch((e) => {
+        router.push('/404');
+      });
+  }, [slug, router]);
+  if (isLoading) {
     return (
       <div className="w-full h-screen flex justify-center items-center">
         <span className="h-screen w-full flex justify-center items-center">
@@ -31,6 +38,10 @@ export default function BeritaSlug({ params }: { params: { slug: string } }) {
         </span>
       </div>
     );
+  }
+  if (data == null) {
+    router.push('/404');
+  }
   return (
     <main>
       <Header />

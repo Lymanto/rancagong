@@ -8,6 +8,7 @@ import ModalDelete from './ModalDeleteBerita';
 import { format } from 'date-fns';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import truncate from '@/lib/truncate';
 
 export default function TableBerita() {
   const useSearch = useSearchParams();
@@ -58,78 +59,92 @@ export default function TableBerita() {
             </tr>
           </thead>
           <tbody>
-            {data?.map((berita) => (
-              <tr
-                className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600"
-                key={berita.id}
-              >
-                <td
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            {data?.length != 0 ? (
+              data?.map((berita) => (
+                <tr
+                  className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600"
+                  key={berita.id}
                 >
-                  <Image
-                    src={berita.imageUrl}
-                    width={100}
-                    height={120}
-                    alt={berita.title}
+                  <td
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    <Image
+                      src={berita.imageUrl}
+                      width={100}
+                      height={120}
+                      alt={berita.title}
+                    />
+                  </td>
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    {berita.title}
+                  </th>
+                  <td
+                    className="px-6 py-4"
+                    dangerouslySetInnerHTML={{
+                      __html: truncate(berita.description),
+                    }}
                   />
-                </td>
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  {berita.title}
-                </th>
-                <td
-                  className="px-6 py-4"
-                  dangerouslySetInnerHTML={{ __html: berita.description }}
-                />
-                <td className="px-6 py-4">
-                  {format(new Date(berita.createdAt), 'dd-MM-yyyy')}
-                </td>
+                  <td className="px-6 py-4">
+                    {format(new Date(berita.createdAt), 'dd-MM-yyyy')}
+                  </td>
+                  <td className="px-6 py-4 text-center flex gap-3 justify-center">
+                    <button
+                      className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                      onClick={() => {
+                        setShowModalEdit(true);
+                        setSelectedBerita(berita);
+                      }}
+                    >
+                      Ubah
+                    </button>
+                    <button
+                      className="font-medium text-red-600 dark:text-blue-500 hover:underline"
+                      onClick={() => {
+                        setShowModalDelete(true);
+                        setSelectedBerita(berita);
+                      }}
+                    >
+                      Hapus
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td className="px-6 py-4 text-center flex gap-3 justify-center">
-                  <button
-                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                    onClick={() => {
-                      setShowModalEdit(true);
-                      setSelectedBerita(berita);
-                    }}
-                  >
-                    Ubah
-                  </button>
-                  <button
-                    className="font-medium text-red-600 dark:text-blue-500 hover:underline"
-                    onClick={() => {
-                      setShowModalDelete(true);
-                      setSelectedBerita(berita);
-                    }}
-                  >
-                    Hapus
-                  </button>
+                  tidak ada data
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
         <div>
           <div className="flex justify-center items-center">
-            {page > 1 && (
-              <a
-                href={`/admin/berita?page=${page - 1}`}
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              >
-                Prev
-              </a>
-            )}
+            {data?.length != 0 && (
+              <>
+                {page > 1 && (
+                  <a
+                    href={`/admin/berita?page=${page - 1}`}
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  >
+                    Prev
+                  </a>
+                )}
 
-            <span className="mx-2">Page {page}</span>
-            {data!.length == 10 && (
-              <a
-                href={`/admin/berita?page=${page + 1}`}
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-              >
-                Next
-              </a>
+                <span className="mx-2">Page {page}</span>
+                {data!.length == 10 && (
+                  <a
+                    href={`/admin/berita?page=${page + 1}`}
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  >
+                    Next
+                  </a>
+                )}
+              </>
             )}
           </div>
         </div>

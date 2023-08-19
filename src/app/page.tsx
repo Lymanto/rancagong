@@ -7,6 +7,7 @@ import { AparaturType, NewsType, ScheduleType } from '@/lib/types';
 import { dehydrate, useQueries } from '@tanstack/react-query';
 import getQueryClient from '@/lib/getQueryClient';
 import Hydrate from '@/component/Hydrate';
+import Head from 'next/head';
 
 const getBerita = async () => {
   const berita: NewsType[] = await fetch('/api/berita?take=6&page=1', {

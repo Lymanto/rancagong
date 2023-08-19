@@ -8,6 +8,7 @@ import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { useInView } from 'react-intersection-observer';
+
 type UserQueryParams = {
   take?: number;
   lastCursor?: string;
@@ -49,7 +50,6 @@ export default function Berita() {
       <div className="max-w-[75rem] w-full mx-auto mt-[3rem]">
         <TitleSection title="Berita" />
         {error ? <p>Error</p> : null}
-
         <div className="grid grid-cols-3 gap-6 mb-[3rem]">
           {isSuccess &&
             data?.pages.map((page) =>

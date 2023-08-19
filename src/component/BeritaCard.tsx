@@ -1,3 +1,4 @@
+import truncate from '@/lib/truncate';
 import { format } from 'date-fns';
 import Image from 'next/image';
 import React from 'react';
@@ -45,7 +46,7 @@ export default function BeritaCard({
         </div>
         <div
           className="article-description"
-          dangerouslySetInnerHTML={{ __html: description }}
+          dangerouslySetInnerHTML={{ __html: truncate(description) }}
         />
       </div>
     </a>

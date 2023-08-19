@@ -52,55 +52,63 @@ export default function TableAparatur() {
             </tr>
           </thead>
           <tbody>
-            {data?.map((aparatur) => (
-              <tr
-                className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600"
-                key={aparatur.id}
-              >
-                <td
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            {data?.length != 0 ? (
+              data?.map((aparatur) => (
+                <tr
+                  className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600"
+                  key={aparatur.id}
                 >
-                  <Image
-                    src={aparatur.imageUrl}
-                    width={100}
-                    height={120}
-                    alt={aparatur.name}
-                  />
-                </td>
-                <th
-                  scope="row"
-                  className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
-                >
-                  {aparatur.name}
-                </th>
+                  <td
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    <Image
+                      src={aparatur.imageUrl}
+                      width={100}
+                      height={120}
+                      alt={aparatur.name}
+                    />
+                  </td>
+                  <th
+                    scope="row"
+                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                  >
+                    {aparatur.name}
+                  </th>
 
-                <td className="px-6 py-4">{aparatur.position}</td>
-                <td className="px-6 py-4">
-                  {format(new Date(aparatur.createdAt), 'dd-MM-yyyy')}
-                </td>
+                  <td className="px-6 py-4">{aparatur.position}</td>
+                  <td className="px-6 py-4">
+                    {format(new Date(aparatur.createdAt), 'dd-MM-yyyy')}
+                  </td>
+                  <td className="px-6 py-4 text-center flex gap-3 justify-center">
+                    <button
+                      className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                      onClick={() => {
+                        setShowModalEdit(true);
+                        setSelectedaparatur(aparatur);
+                      }}
+                    >
+                      Ubah
+                    </button>
+                    <button
+                      className="font-medium text-red-600 dark:text-blue-500 hover:underline"
+                      onClick={() => {
+                        setShowModalDelete(true);
+                        setSelectedaparatur(aparatur);
+                      }}
+                    >
+                      Hapus
+                    </button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
                 <td className="px-6 py-4 text-center flex gap-3 justify-center">
-                  <button
-                    className="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                    onClick={() => {
-                      setShowModalEdit(true);
-                      setSelectedaparatur(aparatur);
-                    }}
-                  >
-                    Ubah
-                  </button>
-                  <button
-                    className="font-medium text-red-600 dark:text-blue-500 hover:underline"
-                    onClick={() => {
-                      setShowModalDelete(true);
-                      setSelectedaparatur(aparatur);
-                    }}
-                  >
-                    Hapus
-                  </button>
+                  tidak ada data
                 </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
