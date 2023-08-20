@@ -70,7 +70,7 @@ export default function BeritaSlug({ params }: { params: { slug: string } }) {
             />
           </div>
           <div
-            className="flex flex-col gap-3 mt-3 article-content "
+            className="flex flex-col mt-3 article-content "
             dangerouslySetInnerHTML={{ __html: data!.description }}
           />
         </div>

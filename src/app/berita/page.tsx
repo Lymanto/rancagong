@@ -47,16 +47,20 @@ export default function Berita() {
   return (
     <main className="font-poppins bg-body">
       <Header />
-      <div className="max-w-[75rem] w-full mx-auto mt-[3rem]">
+      <div className="max-w-[75rem] w-full mx-auto mt-[3rem] px-6 md:px-0">
         <TitleSection title="Berita" />
         {error ? <p>Error</p> : null}
-        <div className="grid grid-cols-3 gap-6 mb-[3rem]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-[3rem]">
           {isSuccess &&
             data?.pages.map((page) =>
               page.data.map((item: NewsType, index: number) => {
                 if (page.data.length === index + 1) {
                   return (
-                    <div ref={ref} key={index}>
+                    <div
+                      ref={ref}
+                      key={index}
+                      className="rounded-[8px] overflow-hidden"
+                    >
                       <BeritaCard
                         image={item.imageUrl}
                         url={item.url}
