@@ -47,7 +47,7 @@ export default function BeritaSlug({ params }: { params: { slug: string } }) {
       <Header />
       <div className="max-w-[62.25rem] w-full mx-auto mt-[3rem]  px-4 md:px-0">
         <div>
-          <h1 className="text-secondary text-4xl leading-[3.5rem] font-semibold text-center max-w-[40rem] mx-auto mb-3">
+          <h1 className="text-secondary text-2xl md:text-4xl leading-[3.5rem] font-semibold text-center max-w-[40rem] mx-auto mb-3">
             {data!.title}
           </h1>
           <div className="flex gap-1 items-center mb-9 justify-center">
