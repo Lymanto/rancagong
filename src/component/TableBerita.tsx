@@ -8,7 +8,7 @@ import ModalDelete from './ModalDeleteBerita';
 import { format } from 'date-fns';
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
-import truncate from '@/lib/truncate';
+import { truncate } from '@/lib/truncate';
 
 export default function TableBerita() {
   const useSearch = useSearchParams();
@@ -67,7 +67,7 @@ export default function TableBerita() {
                 >
                   <td
                     scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    className="px-6 py-4 font-medium text-gray-900 dark:text-white"
                   >
                     <Image
                       src={berita.imageUrl}
@@ -78,7 +78,7 @@ export default function TableBerita() {
                   </td>
                   <th
                     scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    className="px-6 py-4 font-medium text-gray-900 dark:text-white"
                   >
                     {berita.title}
                   </th>

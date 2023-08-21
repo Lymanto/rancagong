@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import ModalEdit from './ModalEditUMKM';
 import ModalDelete from './ModalDeleteUMKM';
 import { format } from 'date-fns';
-import truncate from '@/lib/truncate';
+import { truncate } from '@/lib/truncate';
 
 const getUMKM = async () => {
   const umkm = await fetch('/api/umkm', {

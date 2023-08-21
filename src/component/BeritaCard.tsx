@@ -1,4 +1,4 @@
-import truncate from '@/lib/truncate';
+import { truncateTitle, truncate } from '@/lib/truncate';
 import { format } from 'date-fns';
 import Image from 'next/image';
 import React from 'react';
@@ -31,7 +31,7 @@ export default function BeritaCard({
       </div>
       <div className="bg-white px-4 pt-4 pb-6">
         <h2 className="text-2xl leading-9 font-semibold text-secondary mb-1">
-          {title}
+          {truncateTitle(title)}
         </h2>
         <div className="flex gap-1 items-center  mb-2">
           <Image

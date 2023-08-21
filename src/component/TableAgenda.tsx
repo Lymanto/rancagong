@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 import ModalEdit from './ModalEditAgenda';
 import ModalDelete from './ModalDeleteAgenda';
 import { format } from 'date-fns';
-import truncate from '@/lib/truncate';
+import { truncate } from '@/lib/truncate';
 
 const getAgenda = async () => {
   const agenda = await fetch('/api/agenda', {
@@ -64,7 +64,7 @@ export default function TableAgenda() {
                 >
                   <td
                     scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    className="px-6 py-4 font-medium text-gray-900 dark:text-white"
                   >
                     <Image
                       src={agenda.imageUrl}
@@ -75,7 +75,7 @@ export default function TableAgenda() {
                   </td>
                   <th
                     scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    className="px-6 py-4 font-medium text-gray-900 dark:text-white"
                   >
                     {agenda.title}
                   </th>
