@@ -19,11 +19,11 @@ export default function Umkm() {
   return (
     <main className="font-poppins bg-body">
       <Header />
-      <div className="max-w-[75rem] w-full mx-auto mt-[3rem]">
+      <div className="max-w-[75rem] w-full mx-auto mt-[3rem] px-6 md:px-0">
         <TitleSection title="UMKM" />
         {isLoading ? <p>Loading...</p> : null}
 
-        <div className="grid grid-cols-4 gap-6 mb-[3rem]">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-[3rem]">
           {isSuccess &&
             data?.map((item) => (
               <UMKMCard
