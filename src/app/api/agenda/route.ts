@@ -17,7 +17,7 @@ export const GET = async (req: NextRequest, res: NextResponse) => {
     await main();
     const data = await prisma.schedule.findMany({
       orderBy: {
-        createdAt: 'desc',
+        date: 'desc',
       },
     });
     console.log('page', data);

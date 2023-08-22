@@ -1,4 +1,5 @@
 import { ScheduleType } from '@/lib/types';
+import { format } from 'date-fns';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -15,9 +16,13 @@ export default function AgendaCard({ data }: { data: ScheduleType[] }) {
       <div className="flex flex-col gap-4 px-4 pt-4 h-full overflow-auto">
         {data?.length != 0 ? (
           data?.map((item) => (
-            <div className="flex flex-col gap-1" key={item.id}>
-              <h2 className="font-semibold leading-[1.4375rem] text-base text-primary">
-                HUT RI KE-78
+            <a
+              href={`agenda/${item.url}`}
+              className="flex flex-col gap-1"
+              key={item.id}
+            >
+              <h2 className="font-semibold leading-[1.4375rem] text-base text-primary hover:text-secondary">
+                {item.title}
               </h2>
               <div className="flex gap-2">
                 <div className="flex gap-[2px] items-center">
@@ -28,7 +33,7 @@ export default function AgendaCard({ data }: { data: ScheduleType[] }) {
                     alt="Icon Calendar"
                   />
                   <p className="text-xs leading-[1.3125rem] text-third">
-                    17 Agustus 2023
+                    {format(new Date(item.date), 'dd MMMM yyyy')}
                   </p>
                 </div>
                 <div className="flex gap-[2px] items-center">
@@ -39,11 +44,11 @@ export default function AgendaCard({ data }: { data: ScheduleType[] }) {
                     alt="Icon Location"
                   />
                   <p className="text-xs leading-[1.3125rem] text-third">
-                    Halaman Kantor Desa
+                    {item.location}
                   </p>
                 </div>
               </div>
-            </div>
+            </a>
           ))
         ) : (
           <div>Tidak ada data</div>

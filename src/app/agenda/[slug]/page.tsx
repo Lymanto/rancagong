@@ -4,23 +4,24 @@ import Header from '@/component/Header';
 import axios from 'axios';
 import { format } from 'date-fns';
 import Image from 'next/image';
-import { redirect } from 'next/navigation';
+import { redirect, useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 
-type BeritaType = {
+type ScheduleType = {
   title: string;
   description: string;
   imageUrl: string;
-  createdAt: string;
+  date: string;
+  location: string;
 };
 
 export default function BeritaSlug({ params }: { params: { slug: string } }) {
-  const [data, setData] = useState<BeritaType>();
+  const [data, setData] = useState<ScheduleType>();
   const slug = params.slug;
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     axios
-      .get(`/api/berita/${slug}`)
+      .get(`/api/agenda/${slug}`)
       .then((res) => {
         setData(res.data);
         setIsLoading(false);
@@ -49,17 +50,31 @@ export default function BeritaSlug({ params }: { params: { slug: string } }) {
           <h1 className="text-secondary text-2xl md:text-4xl leading-[3.5rem] font-semibold text-center max-w-[40rem] mx-auto mb-3">
             {data!.title}
           </h1>
-          <div className="flex gap-1 items-center mb-9 justify-center">
-            <Image
-              src={'/ICCalendar.svg'}
-              width={16}
-              height={16}
-              alt="Icon Calendar"
-            />
-            <p className="text-sm leading-[1.3125rem] text-third">
-              {format(new Date(data!.createdAt), 'dd MMMM yyyy')}
-            </p>
+          <div className="flex gap-2 justify-center items-center mb-9 ">
+            <div className="flex gap-1 items-center">
+              <Image
+                src={'/ICCalendar.svg'}
+                width={16}
+                height={16}
+                alt="Icon Calendar"
+              />
+              <p className="text-xs leading-[1.3125rem] text-third">
+                {format(new Date(data!.date), 'dd MMMM yyyy')}
+              </p>
+            </div>
+            <div className="flex gap-1 items-center">
+              <Image
+                src={'/ICLocation.svg'}
+                width={16}
+                height={16}
+                alt="Icon Location"
+              />
+              <p className="text-xs leading-[1.3125rem] text-third">
+                {data!.location}
+              </p>
+            </div>
           </div>
+
           <div className="relative w-full h-[18rem] md:h-[36.375rem] overflow-hidden mx-auto">
             <Image
               src={data!.imageUrl}
