@@ -81,8 +81,8 @@ export default function ModalEdit({
     }
     formData.append('id', umkm.id.toString());
     formData.append('imageId', umkm.imageId.toString());
-    if (name === '' || whatsAppUrl === '' || description === '') {
-      setError('name, url description tidak boleh kosong');
+    if (name === '' || address === '' || description === '') {
+      alert('name, url description tidak boleh kosong');
       return;
     }
 
@@ -91,6 +91,7 @@ export default function ModalEdit({
       .put('/api/umkm', formData)
       .then((res) => {
         setLoading(false);
+        alert('Berhasil edit umkm');
       })
       .catch((err) => {
         setLoading(false);
@@ -181,13 +182,13 @@ export default function ModalEdit({
                           htmlFor="whatsAppUrl"
                           className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                         >
-                          WhatsApp URL
+                          WhatsApp
                         </label>
                         <input
                           type="text"
                           id="whatsAppUrl"
                           className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                          placeholder="WhatsApp URL"
+                          placeholder="WhatsApp"
                           value={whatsAppUrl}
                           onChange={(e) => setWhatsAppUrl(e.target.value)}
                         />

@@ -46,7 +46,7 @@ export default function UMKMCard({
         />
       </div>
       <div className="flex flex-row gap-3 justify-center">
-        {whatsAppUrl != 'null' ? (
+        {whatsAppUrl != null ? (
           <a href={whatsAppUrl} rel="noopener noreferrer" target="_blank">
             <Image
               src={'/whatsapp.svg'}
@@ -56,22 +56,22 @@ export default function UMKMCard({
             />
           </a>
         ) : null}
-        {shopeeUrl != 'null' ? (
+        {shopeeUrl != null ? (
           <a href={shopeeUrl} rel="noopener noreferrer" target="_blank">
             <Image src={'/shopee.svg'} width={36} height={36} alt="shopee" />
           </a>
         ) : null}
-        {goFoodUrl != 'null' ? (
+        {goFoodUrl != null ? (
           <a href={goFoodUrl} rel="noopener noreferrer" target="_blank">
             <Image src={'/gojek.svg'} width={36} height={36} alt="gofood" />
           </a>
         ) : null}
-        {grabFoodUrl != 'null' ? (
+        {grabFoodUrl != null ? (
           <a href={grabFoodUrl} rel="noopener noreferrer" target="_blank">
             <Image src={'/grab.svg'} width={36} height={36} alt="grabfood" />
           </a>
         ) : null}
-        {tokopediaUrl != 'null' ? (
+        {tokopediaUrl != null ? (
           <a href={tokopediaUrl} rel="noopener noreferrer" target="_blank">
             <Image
               src={'/tokopedia.svg'}
@@ -81,12 +81,12 @@ export default function UMKMCard({
             />
           </a>
         ) : null}
-        {ttUrl != 'null' ? (
+        {ttUrl != null ? (
           <a href={ttUrl} rel="noopener noreferrer" target="_blank">
             <Image src={'/tiktok.svg'} width={36} height={36} alt="tiktok" />
           </a>
         ) : null}
-        {instagramUrl != 'null' ? (
+        {instagramUrl != null ? (
           <a href={instagramUrl} rel="noopener noreferrer" target="_blank">
             <Image
               src={'/instagram.svg'}

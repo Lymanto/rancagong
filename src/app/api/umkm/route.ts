@@ -35,12 +35,12 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
     const name = formData.get('name') as string;
     const address = formData.get('address') as string;
     const description = formData.get('description') as string;
-    const whatsAppUrl = formData.get('whatsAppUrl') as string | null;
-    const shopeeUrl = formData.get('shopeeUrl') as string | null;
-    const tokopediaUrl = formData.get('tokopediaUrl') as string | null;
-    const grabUrl = formData.get('grabUrl') as string | null;
-    const gojekUrl = formData.get('gojekUrl') as string | null;
-    const instagramUrl = formData.get('instagramUrl') as string | null;
+    const whatsAppUrl = formData.get('whatsAppUrl') as string;
+    const shopeeUrl = formData.get('shopeeUrl') as string;
+    const tokopediaUrl = formData.get('tokopediaUrl') as string;
+    const grabUrl = formData.get('grabUrl') as string;
+    const gojekUrl = formData.get('gojekUrl') as string;
+    const instagramUrl = formData.get('instagramUrl') as string;
     const tiktokUrl = formData.get('tiktokUrl') as string | null;
     const image = formData.get('image') as Blob;
 
@@ -70,14 +70,14 @@ export const POST = async (req: NextRequest, res: NextResponse) => {
         name,
         imageUrl: uploadedImageResponse.url,
         imageId,
-        whatsAppUrl: whatsAppUrl != '' ? whatsAppUrl : null,
-        shopeeUrl: shopeeUrl != '' ? shopeeUrl : null,
-        tokopediaUrl: tokopediaUrl != '' ? tokopediaUrl : null,
-        instagramUrl: instagramUrl != '' ? instagramUrl : null,
+        whatsAppUrl: whatsAppUrl != '' ? whatsAppUrl : '',
+        shopeeUrl: shopeeUrl != '' ? shopeeUrl : '',
+        tokopediaUrl: tokopediaUrl != '' ? tokopediaUrl : '',
+        instagramUrl: instagramUrl != '' ? instagramUrl : '',
         address,
-        grabFoodUrl: grabUrl != '' ? grabUrl : null,
-        goFoodUrl: gojekUrl != '' ? gojekUrl : null,
-        ttUrl: tiktokUrl != '' ? tiktokUrl : null,
+        grabFoodUrl: grabUrl != '' ? grabUrl : '',
+        goFoodUrl: gojekUrl != '' ? gojekUrl : '',
+        ttUrl: tiktokUrl != '' ? tiktokUrl : '',
       },
     });
     return NextResponse.json({ message: 'Success', post }, { status: 201 });
@@ -99,13 +99,13 @@ export const PUT = async (req: NextRequest, res: NextResponse) => {
     const name = formData.get('name') as string;
     const address = formData.get('address') as string;
     const description = formData.get('description') as string;
-    const whatsAppUrl = formData.get('whatsAppUrl') as string | null;
-    const shopeeUrl = formData.get('shopeeUrl') as string | null;
-    const tokopediaUrl = formData.get('tokopediaUrl') as string | null;
-    const grabUrl = formData.get('grabUrl') as string | null;
-    const gojekUrl = formData.get('gojekUrl') as string | null;
-    const instagramUrl = formData.get('instagramUrl') as string | null;
-    const tiktokUrl = formData.get('tiktokUrl') as string | null;
+    const whatsAppUrl = formData.get('whatsAppUrl') as string;
+    const shopeeUrl = formData.get('shopeeUrl') as string;
+    const tokopediaUrl = formData.get('tokopediaUrl') as string;
+    const grabUrl = formData.get('grabUrl') as string;
+    const gojekUrl = formData.get('gojekUrl') as string;
+    const instagramUrl = formData.get('instagramUrl') as string;
+    const tiktokUrl = formData.get('tiktokUrl') as string;
 
     const oldImageId = formData.get('imageId') as string;
     const image = formData.get('image') as Blob;
@@ -125,13 +125,13 @@ export const PUT = async (req: NextRequest, res: NextResponse) => {
           description,
           name,
           address,
-          whatsAppUrl: whatsAppUrl != '' ? whatsAppUrl : null,
-          shopeeUrl: shopeeUrl != '' ? shopeeUrl : null,
-          tokopediaUrl: tokopediaUrl != '' ? tokopediaUrl : null,
-          instagramUrl: instagramUrl != '' ? instagramUrl : null,
-          grabFoodUrl: grabUrl != '' ? grabUrl : null,
-          goFoodUrl: gojekUrl != '' ? gojekUrl : null,
-          ttUrl: tiktokUrl != '' ? tiktokUrl : null,
+          whatsAppUrl: whatsAppUrl != '' ? whatsAppUrl : '',
+          shopeeUrl: shopeeUrl != '' ? shopeeUrl : '',
+          tokopediaUrl: tokopediaUrl != '' ? tokopediaUrl : '',
+          instagramUrl: instagramUrl != '' ? instagramUrl : '',
+          grabFoodUrl: grabUrl != '' ? grabUrl : '',
+          goFoodUrl: gojekUrl != '' ? gojekUrl : '',
+          ttUrl: tiktokUrl != '' ? tiktokUrl : '',
         },
       });
       return NextResponse.json({ message: 'Success', post }, { status: 201 });
@@ -160,13 +160,13 @@ export const PUT = async (req: NextRequest, res: NextResponse) => {
           address,
           imageId,
           imageUrl: uploadedImageResponse.url,
-          whatsAppUrl: whatsAppUrl != '' ? whatsAppUrl : null,
-          shopeeUrl: shopeeUrl != '' ? shopeeUrl : null,
-          tokopediaUrl: tokopediaUrl != '' ? tokopediaUrl : null,
-          instagramUrl: instagramUrl != '' ? instagramUrl : null,
-          grabFoodUrl: grabUrl != '' ? grabUrl : null,
-          goFoodUrl: gojekUrl != '' ? gojekUrl : null,
-          ttUrl: tiktokUrl != '' ? tiktokUrl : null,
+          whatsAppUrl: whatsAppUrl != '' ? whatsAppUrl : '',
+          shopeeUrl: shopeeUrl != '' ? shopeeUrl : '',
+          tokopediaUrl: tokopediaUrl != '' ? tokopediaUrl : '',
+          instagramUrl: instagramUrl != '' ? instagramUrl : '',
+          grabFoodUrl: grabUrl != '' ? grabUrl : '',
+          goFoodUrl: gojekUrl != '' ? gojekUrl : '',
+          ttUrl: tiktokUrl != '' ? tiktokUrl : '',
         },
       });
       return NextResponse.json({ message: 'Success', post }, { status: 201 });
