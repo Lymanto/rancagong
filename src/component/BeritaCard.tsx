@@ -29,7 +29,7 @@ export default function BeritaCard({
           style={{ objectFit: 'cover', position: 'absolute' }}
         />
       </div>
-      <div className=" px-4 pt-4 pb-6">
+      <div className=" px-4 pt-4 pb-6 bg-white">
         <h2 className="text-2xl leading-9 font-semibold text-secondary mb-1">
           {truncateTitle(title)}
         </h2>
