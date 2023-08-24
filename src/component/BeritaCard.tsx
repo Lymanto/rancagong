@@ -19,7 +19,7 @@ export default function BeritaCard({
   return (
     <a
       href={`berita/${url}`}
-      className="shadow-primary rounded-[8px] overflow-hidden"
+      className="shadow-primary rounded-[8px] overflow-hidden bg-white"
     >
       <div className="relative min-h-[13.75rem]">
         <Image
@@ -29,7 +29,7 @@ export default function BeritaCard({
           style={{ objectFit: 'cover', position: 'absolute' }}
         />
       </div>
-      <div className="bg-white px-4 pt-4 pb-6">
+      <div className=" px-4 pt-4 pb-6">
         <h2 className="text-2xl leading-9 font-semibold text-secondary mb-1">
           {truncateTitle(title)}
         </h2>
