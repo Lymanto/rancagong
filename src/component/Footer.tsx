@@ -36,8 +36,8 @@ export default function Footer() {
           <h3 className="mb-[2px] text-2xl font-semibold leading-9">
             Kontak Desa
           </h3>
-          <p className="mb-2">example@gmail.com</p>
-          <p>089xxxxxxxx</p>
+          <p className="mb-2">juniardiedo3@gmail.com</p>
+          <p>087789279760</p>
         </div>
         <div>
           <h3 className="mb-[2px] text-2xl font-semibold leading-9">
